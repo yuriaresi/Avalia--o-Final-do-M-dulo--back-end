@@ -40,6 +40,11 @@ const recados = [
 ];
 app.use(express.json());
 
+app.get("/", function (requisicao, resposta) {
+  resposta.status(200);
+  resposta.send("Bem vindo a API");
+});
+
 
 app.post("/login", function (requisicao, resposta) {
   const email = requisicao.body.email;
