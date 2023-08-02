@@ -142,6 +142,12 @@ app.post("/criar-usuario", function (requisicao, resposta) {
   console.log("possui mesmo", possuiMesmoEmail);
   // console.log(usuarios);
   contador++;
+
+  setTimeout(() => {
+    console.log("Timeout de 5 segundos concluído.");
+    // Coloque qualquer ação que você deseja executar após o timeout aqui
+  }, 5000); // 5000 milissegundos = 5 segundos
+
 });
 
 app.get("/usuarios", function (requisicao, resposta) {
