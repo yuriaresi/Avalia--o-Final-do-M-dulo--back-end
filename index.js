@@ -38,7 +38,7 @@ const recados = [
     contadorRecados: 1,
   }
 ];
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
   res.header('Access-Control-Allow-Origin', '*'); // Ou defina o domínio do seu site, caso específico.
   res.header('Access-Control-Allow-Methods', 'GET, PUT, POST, DELETE');
   res.header('Access-Control-Allow-Headers', 'Content-Type');
@@ -130,12 +130,16 @@ app.post("/criar-usuario", function (requisicao, resposta) {
     resposta.status(400);
     resposta.send("Já existe um usário cadastrado com esse email");
   } else {
-    resposta.send("Usuário cadastrado com sucesso");
+    resposta.json({
+      nome: novoUsuario.nome,
+      email: novoUsuario.email,
+      id: novoUsuario.identificador,
+    });
     usuarios.push(novoUsuario);
   }
 
   console.log("possui mesmo", possuiMesmoEmail);
-  console.log(usuarios);
+  // console.log(usuarios);
   contador++;
 });
 
@@ -202,10 +206,10 @@ app.put("/recados/:id", function (requisicao, resposta) {
   let recado = requisicao.body.recado;
   let id = parseInt(requisicao.params.id);
   let recadoEncontrado = recados.find(recado => recado.contadorRecados === id);
-  if (!recadoEncontrado){
+  if (!recadoEncontrado) {
     resposta.status(404);
     resposta.send("Recado não encontrado");
-  }else{
+  } else {
     recadoEncontrado.titulo = titulo;
     recadoEncontrado.recado = recado;
     resposta.status(200);
@@ -217,10 +221,10 @@ app.put("/recados/:id", function (requisicao, resposta) {
 app.delete("/recados/:id", function (requisicao, resposta) {
   let id = parseInt(requisicao.params.id);
   let recadoEncontrado = recados.findIndex(recado => recado.contadorRecados === id);
-  if (!recadoEncontrado){
+  if (!recadoEncontrado) {
     resposta.status(404);
     resposta.send("Recado não encontrado");
-  }else{
+  } else {
     recados.splice(recadoEncontrado, 1);
     resposta.status(200);
     resposta.send("Recado deletado com sucesso");
