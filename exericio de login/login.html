@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=\, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+</head>
+<body>
+  <form id="formulario-login">
+    <input id="email" type="email" required name="email">
+    <input id="senha" type="password" required name="password"  >
+    <button type="submit">
+      Login
+    </button>
+    <button>
+      Criar Usuario
+    </button>
+  </form>
+  <div id="feedback"></div>
+
+  <script>
+    const form = document.getElementById('formulario-login');
+    form.addEventListener("submit", function (evento) {
+      evento.preventDefault();
+
+      const email  = document.querySelector("#email").value
+      const senha = document.querySelector("#senha").value
+
+      console.log('submit', email, senha)
+      // metodo POST
+      // url: http://localhost:80/user/login
+      // Body: JSON { email, password }
+      axios.post('http://localhost:3000/login', {
+        email: email,
+        senha: senha,
+      })
+      .then(function (param) {
+        console.log(param)
+        feedback.innerHTML = 'Login realizado com sucesso'
+      }).catch(function (param) {
+        console.log(param)
+        feedback.innerHTML = 'Erro ao realizar login <br/>' + param.response.data;
+      })
+    })
+
+  </script>
+</body>
+</html>

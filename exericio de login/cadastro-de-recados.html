@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <!-- 
+  titulo
+  descricao
+ -->
+
+    <form id="formulario-recados">
+        <label for="titulo">Titutlo:</label>
+        <input required type="text" name="titulo" id="titulo"><br><br>
+        <label for="descricao">Descrição:</label>
+        <textarea required name="descricao" id="descricao" cols="30" rows="10"></textarea><br><br>
+        <button id="botaoSubmit">Enviar</button>
+
+    </form>
+
+    <script>
+        const form = document.querySelector("#formulario-recados");
+        form.addEventListener("submit", function (evento) {
+            evento.preventDefault();
+            const titulo = document.querySelector("#titulo").value;
+            const descricao = document.querySelector("#descricao").value;
+            console.log("titulo "+ titulo)
+            console.log("descricao "+ descricao)    
+        });
+    </script>
+</body>
+
+</html>

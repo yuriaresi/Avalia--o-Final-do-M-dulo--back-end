@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form id="formulario-usuario">
+      <label for="nome">Nome:</label>
+      <input required id="nome" type="text" name="nome" />
+
+      <label for="email">Email:</label>
+      <input type="email" required id="email" name="email" />
+
+      <label for="senha">Senha:</label>
+      <input type="password" id="senha" name="senha" required />
+      <button id="btnCadastrar" type="submit">Cadastrar</button>
+      <br />
+    </form>
+    <script>
+      const form = document.getElementById("formulario-usuario");
+      form.addEventListener("submit", function (evento) {
+        evento.preventDefault();
+
+        const nome = document.querySelector("#nome").value;
+        const email = document.querySelector("#email").value;
+        const senha = document.querySelector("#senha").value;
+
+        console.log(nome, email, senha);
+      });
+    </script>
+  </body>
+</html>
