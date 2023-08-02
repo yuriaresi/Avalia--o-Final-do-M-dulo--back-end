@@ -131,6 +131,7 @@ app.post("/criar-usuario", function (requisicao, resposta) {
     resposta.send("Já existe um usário cadastrado com esse email");
   } else {
     resposta.json({
+      mensagem: "Usuário criado com sucesso",
       nome: novoUsuario.nome,
       email: novoUsuario.email,
       id: novoUsuario.identificador,
