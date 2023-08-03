@@ -77,9 +77,14 @@ app.post("/login", function (requisicao, resposta) {
   //     return true;
   //   }
   // });
-  if (existeUsuario) {
-    resposta.status(200);
-    resposta.json("login feito com sucesso.");
+  if (existeUsuario)  { for (const usuario of usuarios) {
+    if (usuario.email === email && usuario.senha === senha) {
+      resposta.status(200); 
+      resposta.json(`Senha bem vindo ${usuario.nome}!`);
+    }
+  }
+    // resposta.status(200);
+    // resposta.json("login feito com sucesso.");
   } else {
     resposta.status(400);
     resposta.send("usuário inválido");

@@ -41,7 +41,7 @@
       })
       .then(function (param) {
         console.log(param)
-        feedback.innerHTML = 'Login realizado com sucesso ' + param.data.usuario.nome
+        feedback.innerHTML = `Senha bem vindo ${param.data.usuario.nome}!`
       }).catch(function (param) {
         console.log(param)
         feedback.innerHTML = 'Erro ao realizar login <br/>' + param.response.data;
