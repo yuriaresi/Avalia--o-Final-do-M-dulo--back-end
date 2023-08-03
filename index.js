@@ -83,7 +83,7 @@ app.post("/login", function (requisicao, resposta) {
     const isLoggedIn = localStorage.getItem('isLoggedIn');
     if (isLoggedIn === 'true') {
       window.location.href = "./recados.html";
-    }
+    }}
 
   // usando o filter
   // const usuariosEncontrados = usuarios.filter(function (usuario) {
