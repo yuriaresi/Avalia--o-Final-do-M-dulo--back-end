@@ -56,39 +56,29 @@ app.get("/", function (requisicao, resposta) {
 app.post("/login", function (requisicao, resposta) {
   const email = requisicao.body.email;
   const senha = requisicao.body.senha;
-  //usando for of
+
   let existeUsuario = false;
+  let nomeUsuario = "";
+
   for (const usuario of usuarios) {
     if (usuario.email === email && usuario.senha === senha) {
       existeUsuario = true;
+      nomeUsuario = usuario.nome;
+      break; // Encontramos o usuário, então podemos sair do loop
     }
   }
 
-  // usando o some
-  // const existeUsuario = usuarios.some(function (usuario) {
-  //   if(usuario.email === email && usuario.senha === senha) {
-  //     return true;
-  //   }
-  // });
-
-  // usando o find
-  // const usuario = usuarios.find(function (usuario) {
-  //   if (usuario.email === email && usuario.senha === senha) {
-  //     return true;
-  //   }
-  // });
-  if (existeUsuario)  { for (const usuario of usuarios) {
-    if (usuario.email === email && usuario.senha === senha) {
-      resposta.status(200); 
-      resposta.json(`Senha bem vindo ${usuario.nome}!`);
-    }
-  }
-    // resposta.status(200);
-    // resposta.json("login feito com sucesso.");
+  if (existeUsuario) {
+    resposta.status(200);
+    resposta.json({
+      mensagem: "Login feito com sucesso",
+      nome: nomeUsuario,
+    });
   } else {
     resposta.status(400);
-    resposta.send("usuário inválido");
+    resposta.send("Usuário inválido");
   }
+
 
 
   // usando o filter
