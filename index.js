@@ -79,7 +79,11 @@ app.post("/login", function (requisicao, resposta) {
     resposta.send("Usuário inválido");
   }
 
-
+  function verificarAutenticacao() {
+    const isLoggedIn = localStorage.getItem('isLoggedIn');
+    if (isLoggedIn === 'true') {
+      window.location.href = "./recados.html";
+    }
 
   // usando o filter
   // const usuariosEncontrados = usuarios.filter(function (usuario) {
