@@ -62,22 +62,6 @@ app.post("/login", function (requisicao, resposta) {
     if (usuario.email === email && usuario.senha === senha) {
       existeUsuario = true;
     }
-    
-    if (existeUsuario) {
-      resposta.status(200);
-      resposta.json({
-        mensagem: "Login feito com sucesso",
-        usuario: {
-          nome: usuario.nome,
-          email: usuario.email,
-          identificador: usuario.identificador
-        }
-      });
-    } else {
-      resposta.status(400);
-      resposta.send("usuário inválido");
-    }
-
   }
 
   // usando o some
@@ -93,7 +77,13 @@ app.post("/login", function (requisicao, resposta) {
   //     return true;
   //   }
   // });
-  
+  if (existeUsuario) {
+    resposta.status(200);
+    resposta.json("login feito com sucesso.");
+  } else {
+    resposta.status(400);
+    resposta.send("usuário inválido");
+  }
 
 
   // usando o filter
