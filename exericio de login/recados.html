@@ -8,6 +8,15 @@
   <link rel="stylesheet" href="/styles/recados.css">
 </head>
 <body>
+  <script>
+    // Verifica se o usuário está logado
+    const isLoggedIn = localStorage.getItem('loggedIn');
+
+    // Se o usuário não estiver logado, redireciona de volta para a página de login
+    if (!isLoggedIn) {
+        window.location.href = "./login.html";
+    }
+</script>
   <h1>Recados</h1>
 
   <table>

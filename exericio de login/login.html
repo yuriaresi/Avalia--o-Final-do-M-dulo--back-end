@@ -60,6 +60,9 @@
           console.log(param);
           feedback.innerHTML = 'Erro ao realizar login <br/>' + param.response.data;
         });
+
+        localStorage.setItem('loggedIn', 'true');
+        
     })
 
   </script>
