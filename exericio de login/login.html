@@ -1,37 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
 </head>
+
 <body>
-  
+
 </body>
+
 </html>
+
 <body>
   <form id="formulario-login">
-    <input id="email" type="email" required name="email">
-    <input id="senha" type="password" required name="password"  >
-    <button type="submit">
-      Login
+    <input placeholder="Email" id="email" type="email" required name="email">
+    <input placeholder="Senha" id="senha" type="password" required name="password">
+    <button type="submit"> Login
     </button>
-    <button>
+
+
+  </form>
+  <a href="./cadastro-de-usuario.html"><button id="criar-usuario">
       Criar Usuario
     </button>
-  </form>
+  </a>
   <div id="feedback"></div>
 
   <script>
+// const novoUsuario = document.querySelector("#criar-usuario");
+
+// novoUsuario.addEventListener("click", function(e) {
+//   window.location.href = "./cadastro-de-usuario.html"
+// })
     const form = document.getElementById('formulario-login');
     form.addEventListener("submit", function (evento) {
       evento.preventDefault();
 
-      const email  = document.querySelector("#email").value
-      const senha = document.querySelector("#senha").value
+      const email = document.querySelector("#email").value;
+      const senha = document.querySelector("#senha").value;
 
-      console.log('submit', email, senha)
+      console.log('submit', email, senha);
       // metodo POST
       // url: http://localhost:80/user/login
       // Body: JSON { email, password }
@@ -39,15 +50,18 @@
         email: email,
         senha: senha,
       })
-      .then(function (param) {
-        console.log(param)
-        feedback.innerHTML = `Seja bem vindo(a) ${param.data.nome}!`
-      }).catch(function (param) {
-        console.log(param)
-        feedback.innerHTML = 'Erro ao realizar login <br/>' + param.response.data;
-      })
+        .then(function (param) {
+          console.log(param);
+          feedback.innerHTML = `Seja bem vindo(a) ${param.data.nome}!`;
+          window.location.href = "./recados.html";
+
+        }).catch(function (param) {
+          console.log(param);
+          feedback.innerHTML = 'Erro ao realizar login <br/>' + param.response.data;
+        });
     })
 
   </script>
 </body>
+
 </html>

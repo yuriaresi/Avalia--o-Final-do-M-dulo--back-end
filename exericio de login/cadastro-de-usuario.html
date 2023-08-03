@@ -11,17 +11,18 @@
 <body>
   <form id="formulario-usuario">
     <label for="nome">Nome:</label>
-    <input required id="nome" type="text" name="nome" />
+    <input placeholder="Nome" required id="nome" type="text" name="nome" />
 
     <label for="email">Email:</label>
-    <input type="email" required id="email" name="email" />
+    <input placeholder="Email" type="email" required id="email" name="email" />
 
     <label for="senha">Senha:</label>
-    <input type="password" id="senha" name="senha" required />
+    <input placeholder="Senha" type="password" id="senha" name="senha" required />
     <button id="btnCadastrar" type="submit">Cadastrar</button>
     <br />
   </form>
-  <div><p id="teste">teste</p></div>
+  <a href="./login.html"><button>voltar</button></a>
+  <div><p id="teste"></p></div>
   <script>
     const teste = document.querySelector("#teste");
     const form = document.getElementById("formulario-usuario");
