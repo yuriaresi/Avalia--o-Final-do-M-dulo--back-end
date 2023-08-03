@@ -21,7 +21,9 @@
     <button id="btnCadastrar" type="submit">Cadastrar</button>
     <br />
   </form>
+  <div><p id="teste">teste</p></div>
   <script>
+    const teste = document.querySelector("#teste");
     const form = document.getElementById("formulario-usuario");
     form.addEventListener("submit", async (evento) => {
       evento.preventDefault();
@@ -32,13 +34,14 @@
 
       console.log(nome, email, senha);
 
-      axios.post("https://api-recados-7pfq.onrender.com/criar-usuario", {
+     const response = await axios.post("https://api-recados-7pfq.onrender.com/criar-usuario", {
         nome: nome,
-        email: email,
+       email: email,
         senha: senha
-
       });
-      
+      console.log(response.data);
+      console.log(`Nome do Usuario:${response.data.nome},Email: ${response.data.email}, ID do usuario: ${response.data.id}`);
+      teste.innerHTML = `Nome do Usuario:${response.data.nome}<br>Email: ${response.data.email}<br>ID do usuario: ${response.data.id}`
     });
   </script>
 </body>

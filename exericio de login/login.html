@@ -2,10 +2,14 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=\, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
 </head>
+<body>
+  
+</body>
+</html>
 <body>
   <form id="formulario-login">
     <input id="email" type="email" required name="email">
@@ -31,13 +35,13 @@
       // metodo POST
       // url: http://localhost:80/user/login
       // Body: JSON { email, password }
-      axios.post('http://localhost:3000/login', {
+      axios.post('https://api-recados-7pfq.onrender.com/login', {
         email: email,
         senha: senha,
       })
       .then(function (param) {
         console.log(param)
-        feedback.innerHTML = 'Login realizado com sucesso'
+        feedback.innerHTML = 'Login realizado com sucesso' + param.data.nome
       }).catch(function (param) {
         console.log(param)
         feedback.innerHTML = 'Erro ao realizar login <br/>' + param.response.data;
