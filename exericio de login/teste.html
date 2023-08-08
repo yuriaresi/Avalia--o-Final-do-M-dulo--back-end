@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Metatags, título, e links de estilos aqui -->
+</head>
+<body>
+  <!-- Seção de verificação de login aqui -->
+
+  <h1>Recados</h1>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Título</th>
+        <th>Recado</th>
+        <th>Usuário</th>
+      </tr>
+    </thead>
+    <tbody id="tabela-recados">
+      <!-- Aqui vamos preencher os recados dinamicamente -->
+    </tbody>
+  </table>
+
+  <div id="paginação">
+    <button id="pagina-anterior">Anterior</button>
+    <span id="pagina-atual">Página 1</span>
+    <button id="pagina-seguinte">Próxima</button>
+  </div>
+
+  <script>
+    let paginaAtual = 1;
+    const recadosPorPagina = 3; // Defina o número de recados por página
+
+    async function carregarRecados(pagina) {
+      try {
+        const response = await axios.get(`https://api-recados-7pfq.onrender.com/recados?pagina=${pagina}&tamanhoPagina=${recadosPorPagina}`);
+        const recados = response.data;
+
+        const tabelaRecados = document.getElementById('tabela-recados');
+        tabelaRecados.innerHTML = ''; // Limpar a tabela antes de preencher novamente
+
+        recados.forEach((recado) => {
+          const row = document.createElement('tr');
+          row.innerHTML = `
+            <td>${recado.titulo}</td>
+            <td>${recado.recado}</td>
+            <td>${recado.usuarioID}</td>
+          `;
+          tabelaRecados.appendChild(row);
+        });
+
+        const paginaAtualSpan = document.getElementById('pagina-atual');
+        paginaAtualSpan.textContent = `Página ${pagina}`;
+      } catch (error) {
+        console.error(error);
+        alert('Erro ao carregar os recados.');
+      }
+    }
+
+    const paginaAnteriorBtn = document.getElementById('pagina-anterior');
+    const paginaSeguinteBtn = document.getElementById('pagina-seguinte');
+
+    paginaAnteriorBtn.addEventListener('click', () => {
+      if (paginaAtual > 1) {
+        paginaAtual--;
+        carregarRecados(paginaAtual);
+      }
+    });
+
+    paginaSeguinteBtn.addEventListener('click', () => {
+      paginaAtual++;
+      carregarRecados(paginaAtual);
+    });
+
+    carregarRecados(paginaAtual);
+  </script>
+</body>
+</html>
