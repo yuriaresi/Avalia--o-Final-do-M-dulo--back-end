@@ -28,7 +28,7 @@ const recados = [
   {
     usuarioID: 0,
     titulo: "titulo 1",
-    recado: "alguma coisa aqui",
+    recado: "alguma coisa aqui 1",
     contadorRecados: 0,
   },
   {
@@ -172,7 +172,15 @@ app.get("/usuarios", function (requisicao, resposta) {
 });
 
 app.get("/recados", function (requisicao, resposta) {
-  resposta.json(recados);
+  const pagina = parseInt(requisicao.query.pagina) || 1;
+  const tamanhoPagina = 3;
+
+  const startIndex = (pagina - 1) * tamanhoPagina;
+  const endIndex = startIndex + tamanhoPagina;
+
+  const recadosPaginados = recados.slice(startIndex, endIndex);
+
+  resposta.json(recadosPaginados);
 });
 
 app.post("/criar-recados", function (requisicao, resposta) {
