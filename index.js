@@ -36,6 +36,30 @@ const recados = [
     titulo: "titulo 2",
     recado: "alguma coisa aqui 2",
     contadorRecados: 1,
+  },
+  {
+    usuarioID: 1,
+    titulo: "titulo 3",
+    recado: "alguma coisa aqui 3",
+    contadorRecados: 2,
+  },
+  {
+    usuarioID: 1,
+    titulo: "titulo 4",
+    recado: "alguma coisa aqui 4",
+    contadorRecados: 3,
+  },
+  {
+    usuarioID: 1,
+    titulo: "titulo 5",
+    recado: "alguma coisa aqui 5",
+    contadorRecados: 4,
+  },
+  {
+    usuarioID: 1,
+    titulo: "titulo 6",
+    recado: "alguma coisa aqui 6",
+    contadorRecados: 5,
   }
 ];
 app.use(function (req, res, next) {

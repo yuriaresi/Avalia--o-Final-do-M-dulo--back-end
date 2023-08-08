@@ -1,0 +1,78 @@
+/* styles.css */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #525151;
+  }
+  
+  #formulario-usuario {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    margin-bottom: 20px;
+  }
+  
+  label {
+    color: #fff;
+    font-weight: bold;
+  }
+  
+  input {
+    padding: 10px;
+    margin: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 250px;
+  }
+  
+  button {
+    padding: 10px 20px;
+    background-color: rgb(3, 136, 16);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    transform: scale(1.2);
+  }
+  
+  #btnCadastrar {
+    margin-top: 15px;
+  }
+  
+  a {
+    text-decoration: none;
+    color: white;
+  }
+  
+  a button {
+    margin-top: 20px;
+    background-color: rgb(3, 136, 16)
+  }
+  
+  #feedback {
+    font-size: 16px;
+    font-weight: bold;
+    color: #ff0000;
+  }
+  
+  #teste {
+    font-size: 18px;
+    font-weight: bold;
+    color: #fff;
+    margin-top: 20px;
+  }
+  
