@@ -32,13 +32,23 @@
     </tbody>
   </table>
 
+  <div id="paginação">
+    <button id="pagina-anterior">Anterior</button>
+    <span id="pagina-atual">Página 1</span>
+    <button id="pagina-seguinte">Próxima</button>
+  </div>
+
   <script>
-    async function carregarRecados() {
+    let paginaAtual = 1;
+    const recadosPorPagina = 3;
+
+    async function carregarRecados(pagina) {
       try {
-        const response = await axios.get('https://api-recados-7pfq.onrender.com/recados');
+        const response = await axios.get(`https://api-recados-7pfq.onrender.com/recados?pagina=${pagina}&tamanhoPagina=${recadosPorPagina}`);
         const recados = response.data;
 
         const tabelaRecados = document.getElementById('tabela-recados');
+        tabelaRecados.innerHTML = '';
 
         recados.forEach((recado) => {
           const row = document.createElement('tr');
@@ -49,13 +59,30 @@
           `;
           tabelaRecados.appendChild(row);
         });
+
+        const paginaAtualSpan = document.getElementById('pagina-atual');
+        paginaAtualSpan.textContent = `Página ${pagina}`;
       } catch (error) {
-        console.error(error);
         alert('Erro ao carregar os recados.');
       }
     }
 
-    carregarRecados();
+    const paginaAnteriorBtn = document.getElementById('pagina-anterior');
+    const paginaSeguinteBtn = document.getElementById('pagina-seguinte');
+
+    paginaAnteriorBtn.addEventListener('click', () => {
+      if (paginaAtual > 1) {
+        paginaAtual--;
+        carregarRecados(paginaAtual);
+      }
+    });
+
+    paginaSeguinteBtn.addEventListener('click', () => {
+      paginaAtual++;
+      carregarRecados(paginaAtual);
+    });
+
+    carregarRecados(paginaAtual);
   </script>
 </body>
 </html>
