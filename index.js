@@ -93,11 +93,13 @@ app.post("/login", function (requisicao, resposta) {
   }
 
   if (existeUsuario) {
-    resposta.status(200);
-    resposta.json({
-      mensagem: "Login feito com sucesso",
-      nome: nomeUsuario,
-    });
+    setTimeout(() => {
+      resposta.status(200);
+      resposta.json({
+        mensagem: "Login feito com sucesso",
+        nome: nomeUsuario,
+      });
+    }, 5000);
   } else {
     resposta.status(400);
     resposta.send("Usuário inválido");
