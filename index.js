@@ -99,7 +99,7 @@ app.post("/login", function (requisicao, resposta) {
         mensagem: "Login feito com sucesso",
         nome: nomeUsuario,
       });
-    }, 5000);
+    }, 2000);
   } else {
     resposta.status(400);
     resposta.send("Usuário inválido");
